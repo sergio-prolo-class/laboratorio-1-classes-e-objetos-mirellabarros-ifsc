@@ -5,7 +5,7 @@ public class Pessoa {
     private int idade;
 
     public void setNome(String nome) {
-        if (nome.isEmpty()) {
+        if (!nome.isEmpty()) {
             this.nome = nome;
         } else {
             System.out.println("Nome inválido.");
