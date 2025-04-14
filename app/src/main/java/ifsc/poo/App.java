@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) {
+
+        // 1. Lâmpada -----------------------------------------------------------
         Lampada lampada1 = new Lampada();
         Lampada lampada2 = new Lampada();
 
@@ -18,6 +20,7 @@ public class App {
         System.out.println("Lampada 1: " + estadoLampada1);
         System.out.println("Lampada 2: " + estadoLampada2);
 
+        // 2. Pessoa -----------------------------------------------------------
         Pessoa p1 = new Pessoa();
         Pessoa p2 = new Pessoa();
 
@@ -33,21 +36,32 @@ public class App {
         p1.setIdade(-44);
         p2.setNome("");
 
-        System.out.println(p1.getNome() + " tem " + p1.getIdade());
-        System.out.println(p2.getNome() + " tem " + p2.getIdade());
+        System.out.println(p1.getNome() + " tem " + p1.getIdade() + " anos.");
+        System.out.println(p2.getNome() + " tem " + p2.getIdade() + " anos.");
 
+        // 3. Retângulo -----------------------------------------------------------
         Retangulo r1 = new Retangulo();
         r1.setLargura(5);
         r1.setAltura(4);
         System.out.println(r1.getArea());
         System.out.println(r1.getPerimetro());
+
         Retangulo[] retangulos = new Retangulo[10];
         Random r = new Random();
+        float maior = 0;
 
         for (int i = 0; i < 10; i++) {
             retangulos[i] = new Retangulo();
-            retangulos[i].setLargura(r.nextInt(20));
-            retangulos[i].setAltura(r.nextInt(20));
+            retangulos[i].setLargura(r.nextInt(1,20));
+            retangulos[i].setAltura(r.nextInt(1, 20));
+            if (retangulos[i].getArea() > maior) {
+                maior = retangulos[i].getArea();
+            }
         }
+
+        System.out.println("A maior área é " + maior);
+
+        // 4. Relógio -----------------------------------------------------------
+        
     }
 }
