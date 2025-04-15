@@ -40,11 +40,11 @@ public class App {
         System.out.println(p2.getNome() + " tem " + p2.getIdade() + " anos.");
 
         // 3. Retângulo -----------------------------------------------------------
-        Retangulo r1 = new Retangulo();
-        r1.setLargura(5);
-        r1.setAltura(4);
-        System.out.println(r1.getArea());
-        System.out.println(r1.getPerimetro());
+        Retangulo retangulo1 = new Retangulo();
+        retangulo1.setLargura(5);
+        retangulo1.setAltura(4);
+        System.out.println(retangulo1.getArea());
+        System.out.println(retangulo1.getPerimetro());
 
         Retangulo[] retangulos = new Retangulo[10];
         Random r = new Random();
@@ -62,6 +62,16 @@ public class App {
         System.out.println("A maior área é " + maior);
 
         // 4. Relógio -----------------------------------------------------------
-        
+        Relogio relogio = new Relogio();
+        relogio.ajustarHora((byte) 14, (byte) 58, (byte) 32);
+        relogio.avancaMinuto();
+        relogio.avancaMinuto();
+        System.out.println(relogio.getHora());
+        relogio.ajustarHora((byte) 23, (byte) 59, (byte) 59);
+        relogio.avancaSegundo();
+        System.out.println(relogio.getHora());
+        relogio.setAmpm(true);
+        relogio.ajustarHora((byte) 23, (byte) 30, (byte) 45);
+        System.out.println(relogio.getHora());
     }
 }
