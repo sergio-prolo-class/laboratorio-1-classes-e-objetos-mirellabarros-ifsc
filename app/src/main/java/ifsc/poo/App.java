@@ -73,5 +73,21 @@ public class App {
         relogio.setAmpm(true);
         relogio.ajustarHora((byte) 23, (byte) 30, (byte) 45);
         System.out.println(relogio.getHora());
+
+        // 5. Produto -----------------------------------------------------------
+        Produto geladeira = new Produto();
+        geladeira.setNome("Geladeira");
+        geladeira.setPreco(832);
+        Produto microondas = new Produto();
+        microondas.setNome("Micro-ondas");
+        microondas.setPreco(499);
+        geladeira.setDesconto(6);
+        microondas.setDesconto(12);
+        System.out.println(geladeira.getNome() + ": " + geladeira.getPrecoComDesconto());
+        System.out.println(microondas.getNome() + ": " + microondas.getPrecoComDesconto());
+        System.out.println(geladeira.anuncio());
+        System.out.println(microondas.anuncio());
+
+        // 5. Produto -----------------------------------------------------------
     }
 }
