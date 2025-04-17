@@ -11,7 +11,7 @@ public class Produto {
     private double desconto = 0;
 
     public void setNome(String nome) {
-        if(!nome.isEmpty()){
+        if(nome != null && !nome.isEmpty()) {
             this.nome = nome;
         }
     }

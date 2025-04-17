@@ -8,11 +8,9 @@ public class App {
     public static void main(String[] args) {
 
         // 1. Lâmpada -----------------------------------------------------------
+        System.out.println("1. Lâmpada -------------------------------------");
         Lampada lampada1 = new Lampada();
-        Lampada lampada2 = new Lampada();
-
-        lampada1.ligar();
-        lampada2.desligar();
+        Lampada lampada2 = new Lampada(true);
 
         String estadoLampada1 = lampada1.verEstado() ? "ligada" : "desligada";
         String estadoLampada2 = lampada2.verEstado() ? "ligada" : "desligada";
@@ -20,46 +18,51 @@ public class App {
         System.out.println("Lampada 1: " + estadoLampada1);
         System.out.println("Lampada 2: " + estadoLampada2);
 
+        lampada1.ligar();
+        lampada2.desligar();
+
+        estadoLampada1 = lampada1.verEstado() ? "ligada" : "desligada";
+        estadoLampada2 = lampada2.verEstado() ? "ligada" : "desligada";
+
+        System.out.println("Lampada 1: " + estadoLampada1);
+        System.out.println("Lampada 2: " + estadoLampada2);
+        System.out.println("Total de lâmpadas: " + Lampada.getContagem());
+        System.out.println("\n");
+
         // 2. Pessoa -----------------------------------------------------------
-        Pessoa p1 = new Pessoa();
-        Pessoa p2 = new Pessoa();
-
-        p1.setNome("Alice");
-        p1.setIdade(22);
-        p2.setNome("Bruno");
-        p2.setIdade(25);
+        System.out.println("2. Pessoa -------------------------------------");
+        Pessoa p1 = new Pessoa("11122233344");
+        Pessoa p2 = new Pessoa("Maria", "");
+        Pessoa p3 = new Pessoa("Jane", 26,"00012345600");
 
         p2.felizAniversario();
         p2.felizAniversario();
         p2.felizAniversario();
 
-        p1.setIdade(-44);
-        p2.setNome("");
+        boolean resultado_pessoa = p1.setIdade(-44);
+        System.out.println("p1.setIdade(-44): " + resultado_pessoa);
+        resultado_pessoa = p2.setNome("");
+        System.out.println("p1.setNome(\"\"): " + resultado_pessoa);
 
-        System.out.println(p1.getNome() + " tem " + p1.getIdade() + " anos.");
-        System.out.println(p2.getNome() + " tem " + p2.getIdade() + " anos.");
+        System.out.println(p1.getNome() + " tem " + p1.getIdade() + " anos e CPF " + p1.getCPF());
+        System.out.println(p2.getNome() + " tem " + p2.getIdade() + " anos e CPF " + p2.getCPF());
+        System.out.println(p3.getNome() + " tem " + p3.getIdade() + " anos e CPF " + p3.getCPF());
+        System.out.println("\n");
 
         // 3. Retângulo -----------------------------------------------------------
-        Retangulo retangulo1 = new Retangulo();
-        retangulo1.setLargura(5);
-        retangulo1.setAltura(4);
-        System.out.println(retangulo1.getArea());
-        System.out.println(retangulo1.getPerimetro());
-
         Retangulo[] retangulos = new Retangulo[10];
         Random r = new Random();
         float maior = 0;
 
         for (int i = 0; i < 10; i++) {
-            retangulos[i] = new Retangulo();
-            retangulos[i].setLargura(r.nextInt(1,20));
-            retangulos[i].setAltura(r.nextInt(1, 20));
-            if (retangulos[i].getArea() > maior) {
-                maior = retangulos[i].getArea();
-            }
+            retangulos[i] = new Retangulo(r.nextInt(1,20), r.nextInt(1, 20));
         }
 
-        System.out.println("A maior área é " + maior);
+        System.out.println("O retângulo de maior área é " + Retangulo.getRetanguloMaiorArea());
+        System.out.println("A maior área: " + Retangulo.getRetanguloMaiorArea().getArea());
+        System.out.println("O retângulo de menor perímetro é " + Retangulo.getRetanguloMenorPerimetro());
+        System.out.println("O menor perímetro: " + Retangulo.getRetanguloMenorPerimetro().getPerimetro());
+        System.out.println("\n");
 
         // 4. Relógio -----------------------------------------------------------
         Relogio relogio = new Relogio();
@@ -78,16 +81,21 @@ public class App {
         Produto geladeira = new Produto();
         geladeira.setNome("Geladeira");
         geladeira.setPreco(832);
+
         Produto microondas = new Produto();
         microondas.setNome("Micro-ondas");
         microondas.setPreco(499);
+
         geladeira.setDesconto(6);
         microondas.setDesconto(12);
+
         System.out.println(geladeira.getNome() + ": " + geladeira.getPrecoComDesconto());
         System.out.println(microondas.getNome() + ": " + microondas.getPrecoComDesconto());
+
         System.out.println(geladeira.anuncio());
         System.out.println(microondas.anuncio());
 
-        // 5. Produto -----------------------------------------------------------
+        // 6. Livro -----------------------------------------------------------
+
     }
 }

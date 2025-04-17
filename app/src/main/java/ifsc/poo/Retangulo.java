@@ -3,20 +3,34 @@ package ifsc.poo;
 public class Retangulo {
     private float largura = 0;
     private float altura = 0;
+    private static float maiorArea = 0;
+    private static float menorPerimetro = Float.MAX_VALUE;
+    private static Retangulo retanguloMaiorArea = null;
+    private static Retangulo retanguloMenorPerimetro = null;
 
-    public void setLargura(float largura) {
+    public Retangulo(float largura, float altura) {
+        setLargura(largura);
+        setAltura(altura);
+        atualizaValores(this);
+    }
+
+    public boolean setLargura(float largura) {
         if (largura > 0) {
             this.largura = largura;
+            return true;
         } else {
-            System.out.println("A largura deve ser maior que zero.");
+            this.largura = 1;
+            return false;
         }
     }
 
-    public void setAltura(float altura) {
+    public boolean setAltura(float altura) {
         if (altura > 0) {
             this.altura = altura;
+            return true;
         } else {
-            System.out.println("A altura deve ser maior que zero.");
+            this.altura = 1;
+            return false;
         }
     }
 
@@ -26,5 +40,24 @@ public class Retangulo {
 
     public float getPerimetro() {
         return 2 * (this.largura + this.altura);
+    }
+
+    public static Retangulo getRetanguloMaiorArea() {
+        return retanguloMaiorArea;
+    }
+
+    public static Retangulo getRetanguloMenorPerimetro() {
+        return retanguloMenorPerimetro;
+    }
+
+    private static void atualizaValores(Retangulo retangulo) {
+        if (retanguloMaiorArea == null || retangulo.getArea() > maiorArea) {
+            maiorArea = retangulo.getArea();
+            retanguloMaiorArea = retangulo;
+        }
+        if (retanguloMenorPerimetro == null || retangulo.getPerimetro() < menorPerimetro) {
+            menorPerimetro = retangulo.getPerimetro();
+            retanguloMenorPerimetro = retangulo;
+        }
     }
 }
