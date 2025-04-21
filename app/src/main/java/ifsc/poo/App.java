@@ -50,6 +50,7 @@ public class App {
         System.out.println("\n");
 
         // 3. Retângulo -----------------------------------------------------------
+        System.out.println("3. Retângulo -------------------------------------");
         Retangulo[] retangulos = new Retangulo[10];
         Random r = new Random();
         float maior = 0;
@@ -65,37 +66,69 @@ public class App {
         System.out.println("\n");
 
         // 4. Relógio -----------------------------------------------------------
-        Relogio relogio = new Relogio();
-        relogio.ajustarHora((byte) 14, (byte) 58, (byte) 32);
-        relogio.avancaMinuto();
-        relogio.avancaMinuto();
-        System.out.println(relogio.getHora());
-        relogio.ajustarHora((byte) 23, (byte) 59, (byte) 59);
-        relogio.avancaSegundo();
-        System.out.println(relogio.getHora());
-        relogio.setAmpm(true);
-        relogio.ajustarHora((byte) 23, (byte) 30, (byte) 45);
-        System.out.println(relogio.getHora());
+        System.out.println("4. Relógio -------------------------------------");
+
+        // Laboratório 1
+        Relogio relogio1 = new Relogio((byte) 13);
+        relogio1.ajustarHora((byte) 14, (byte) 58, (byte) 32);
+        relogio1.avancaMinuto();
+        relogio1.avancaMinuto();
+        System.out.println(relogio1.getHorario());
+        relogio1.ajustarHora((byte) 23, (byte) 59, (byte) 59);
+        relogio1.avancaSegundo();
+        System.out.println(relogio1.getHorario());
+        relogio1.setAmpm(true);
+        relogio1.ajustarHora((byte) 23, (byte) 30, (byte) 45);
+        System.out.println(relogio1.getHorario());
+
+        // Laboratório 2
+        relogio1.setAmpm(false);
+        Relogio relogio2 = new Relogio((byte) 0, (byte) 0, (byte) 0);
+        System.out.println("Relório 2: " + relogio2.getHorario());
+        relogio2.sync(relogio1);
+        System.out.println("Relório 1: " + relogio1.getHorario());
+        System.out.println("Relório 2: " + relogio2.getHorario());
+        relogio1.avancaHora();
+        relogio2.avancaHora();
+        relogio2.avancaMinuto();
+        relogio2.avancaSegundo();
+        System.out.println("Relório 1: " + relogio1.getHorario());
+        System.out.println("Relório 2: " + relogio2.getHorario());
+        System.out.println("Diferença entre o relógio 1 e o relógio 2: " + relogio2.diferenca(relogio1) + " segundos");
+        System.out.println("\n");
 
         // 5. Produto -----------------------------------------------------------
-        Produto geladeira = new Produto();
-        geladeira.setNome("Geladeira");
-        geladeira.setPreco(832);
-
-        Produto microondas = new Produto();
-        microondas.setNome("Micro-ondas");
-        microondas.setPreco(499);
-
+        System.out.println("5. Produto -------------------------------------");
+        // Laboratório 1
+        Produto geladeira = new Produto("Geladeira", 832);
+        Produto microondas = new Produto("Micro-ondas", 499);
         geladeira.setDesconto(6);
         microondas.setDesconto(12);
 
-        System.out.println(geladeira.getNome() + ": " + geladeira.getPrecoComDesconto());
-        System.out.println(microondas.getNome() + ": " + microondas.getPrecoComDesconto());
+        float geladeiraComDesconto = (((float) (100 - geladeira.getDesconto()) / 100) * geladeira.getPreco());
+        float microondasComDesconto = (((float) (100 - microondas.getDesconto()) / 100) * microondas.getPreco());
+
+        System.out.println(geladeira.getNome() + ": " + geladeiraComDesconto);
+        System.out.println(microondas.getNome() + ": " + microondasComDesconto);
 
         System.out.println(geladeira.anuncio());
         System.out.println(microondas.anuncio());
 
+        // Laboratório 2
+        Produto fogao = new Produto("Fogão 4 bocas Eletrolux KL4003", 677);
+
+        String[] listaDeProdutos = Produto.listaDeProdutos();
+
+        for (int i = 0; i < listaDeProdutos.length; i++) {
+            if (listaDeProdutos[i] != null) {
+                System.out.println(listaDeProdutos[i]);
+            }
+        }
+
+        System.out.println("\n");
+
         // 6. Livro -----------------------------------------------------------
+        
 
     }
 }
