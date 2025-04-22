@@ -128,7 +128,51 @@ public class App {
         System.out.println("\n");
 
         // 6. Livro -----------------------------------------------------------
-        
-
+        System.out.println("6. Livro -------------------------------------");
+        Livro livro = new Livro();
+        livro.setNome("O Senhor dos Anéis - A Sociedade do Anel");
+        System.out.println(livro.getNome());
+        livro.setAutor("J. R. R. Tolkien");
+        System.out.println(livro.getAutor());
+        livro.setGeneros("fantasia aventura");
+        System.out.println(livro.getGeneros());
+        livro.setPaginas(464);
+        System.out.println("Total de páginas " + livro.getPaginas());
+        livro.setCapitulos(1, "Uma Festa Muito Esperada", 1);
+        livro.setCapitulos(2, "A Sombra do Passado", 23);
+        livro.setCapitulos(3, "Três é Demais", 44);
+        livro.setCapitulos(4, "Um Atalho para Cogumelos", 66);
+        livro.setCapitulos(5, "Uma Conspiração Desmascarada", 89);
+        livro.setCapitulos(6, "A Floresta Velha", 110);
+        livro.setCapitulos(7, "Em Casa de Tom Bombadil", 131);
+        livro.setCapitulos(8, "Névoa nas Colinas dos Túmulos", 154);
+        livro.setCapitulos(9, "No Pônei Empinado", 176);
+        livro.setCapitulos(10, "Passolargo", 197);
+        livro.setCapitulos(11, "Um Faca na Noite", 219);
+        livro.setCapitulos(12, "Voo para o Vau", 240);
+        livro.setCapitulos(13, "Muitos Encontros", 261);
+        livro.setCapitulos(14, "O Conselho de Elrond", 282);
+        livro.setCapitulos(15, "O Anel Vai para o Sul", 301);
+        livro.setCapitulos(16, "Uma Jornada no Escuro", 320);
+        livro.setCapitulos(17, "A Ponte de Khazad-dûm", 341);
+        livro.setCapitulos(18, "Lothlórien", 361);
+        livro.setCapitulos(19, "O Espelho de Galadriel", 383);
+        livro.setCapitulos(20, "Adeus a Lórien", 403);
+        livro.setCapitulos(21, "O Grande Rio", 423);
+        livro.setCapitulos(22, "A Partida da Sociedade", 446);
+        for (int i = 0; i < 90; i++) {
+            livro.passarPagina();
+        }
+        System.out.println(livro.getPaginaAtual());
+        System.out.println(livro.getCapitulos(livro.getPaginaAtual()));
+        for (int i = 0; i < 300; i++) {
+            livro.passarPagina();
+        }
+        System.out.println(livro.getPaginaAtual());
+        System.out.println(livro.getCapitulos(livro.getPaginaAtual()));
+        for (int i = 0; i < 100; i++) {
+            livro.passarPagina();
+        }
+        System.out.println(livro.getPaginaAtual());
     }
 }
