@@ -174,5 +174,7 @@ public class App {
             livro.passarPagina();
         }
         System.out.println(livro.getPaginaAtual());
+
+        // 6. Navio -----------------------------------------------------------
     }
 }
